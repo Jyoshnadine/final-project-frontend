@@ -10,7 +10,7 @@ const Jobs = () => {
   useEffect(() => {
     try {
       axios
-        .get("http://localhost:4000/api/v1/job/getall", {
+        .get("https://final-project-backend-8zjq.onrender.com/api/v1/job/getall", {
           withCredentials: true,
         })
         .then((res) => {
@@ -33,6 +33,7 @@ const Jobs = () => {
             jobs.jobs.map((element) => {
               return (
                 <div className="card" key={element._id}>
+                  <p>{element.company}</p>
                   <p>{element.title}</p>
                   <p>{element.category}</p>
                   <p>{element.country}</p>

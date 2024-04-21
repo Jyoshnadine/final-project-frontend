@@ -4,6 +4,7 @@ import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { Context } from "../../main";
 const PostJob = () => {
+  const [company, setCompany] = useState("");
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [category, setCategory] = useState("");
@@ -31,9 +32,10 @@ const PostJob = () => {
     }
     await axios
       .post(
-        "http://localhost:4000/api/v1/job/post",
+        "https://final-project-backend-8zjq.onrender.com/api/v1/job/post",
         fixedSalary.length >= 4
           ? {
+              company,
               title,
               description,
               category,
@@ -43,6 +45,7 @@ const PostJob = () => {
               fixedSalary,
             }
           : {
+              company,
               title,
               description,
               category,
@@ -78,6 +81,14 @@ const PostJob = () => {
         <div className="container">
           <h3>POST NEW JOB</h3>
           <form onSubmit={handleJobPost}>
+          <div className="wrapper">
+              <input
+                type="text"
+                value={company}
+                onChange={(e) => setCompany(e.target.value)}
+                placeholder="Company"
+              />
+            </div>      
             <div className="wrapper">
               <input
                 type="text"

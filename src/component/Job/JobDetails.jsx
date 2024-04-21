@@ -12,7 +12,7 @@ const JobDetails = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:4000/api/v1/job/${id}`, {
+      .get(`https://final-project-backend-8zjq.onrender.com/api/v1/job/${id}`, {
         withCredentials: true,
       })
       .then((res) => {
@@ -32,6 +32,9 @@ const JobDetails = () => {
       <div className="container">
         <h3>Job Details</h3>
         <div className="banner">
+        <p>
+            Company: <span> {job.company}</span>
+          </p>
           <p>
             Title: <span> {job.title}</span>
           </p>
